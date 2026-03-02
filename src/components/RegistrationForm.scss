@@ -1,0 +1,247 @@
+/* RegistrationForm.css */
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+
+body {
+  background: #f1f0fb;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+
+.container {
+  display: flex;
+  max-width: 1400px;
+  margin: 40px auto;
+  background: #fff;
+  border-radius: 32px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  padding: 16px;
+  gap: 357px;
+}
+.sidebar {
+  display: flex;
+  background: #f1f0fb;
+  padding: 40px 32px;
+  border: 1px solid #f1f2f9;
+  border-radius: 24px;
+  margin: 16px;
+  flex-direction: column;
+  height: 100%; /* Растягиваем на всю высоту */
+  min-height: 600px;
+  max-width: 348px;
+
+  &_logo {
+    display: flex;
+    gap: 6.7px;
+    text-align: center;
+    justify-content: center;
+    h2 {
+      color: #170f49;
+      font-weight: 700;
+      font-size: 23px;
+      line-height: 1.35;
+      letter-spacing: 0.01em;
+    }
+  }
+  .step-list {
+    display: flex;
+    flex-direction: column;
+    padding: 32px 45px;
+    gap: 10px;
+
+    h4 {
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 1.15;
+      color: #170f49;
+    }
+    p {
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 1.5;
+      color: #6f6c8f;
+      margin-top: 5px;
+    }
+
+    &_item {
+      display: flex;
+      gap: 16px;
+      padding: 2px 0px 0px;
+    }
+
+    .step-number {
+      border: 0.5px solid #d2ceff;
+      border-radius: 8px;
+      padding: 11px 13px;
+      width: 34px;
+      height: 34px;
+      box-shadow:
+        inset 0 4px 6px 0 rgba(255, 255, 255, 0.4),
+        inset 0 -2px 2px 0 rgba(27, 35, 85, 0.07),
+        0 3px 6px 0 rgba(7, 0, 110, 0.03);
+      background: linear-gradient(180deg, #fff 0%, #fbfbfe 100%);
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 1.15;
+      color: #a0a3bd;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      &_active {
+        box-shadow:
+          inset 0 3px 4px 0 rgba(223, 238, 255, 0.1),
+          inset 0 1px 1px 0 rgba(255, 255, 255, 0.1),
+          inset 0 -2px 2px 0 rgba(0, 66, 137, 0.15),
+          0 2px 5px 0 rgba(74, 58, 255, 0.25);
+        background: linear-gradient(181deg, #8c82ff 0%, #4a3aff 100%);
+        color: #fff;
+      }
+    }
+  }
+}
+
+.formRegistration {
+  padding: 48px 48px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #f1f2f9;
+  border-radius: 32px;
+  width: 381px;
+  max-height: 501px;
+  box-shadow: 0 1px 8px 0 rgba(25, 33, 61, 0.06);
+  background: #fff;
+  align-items: center;
+  justify-content: center;
+  max-width: 500px;
+  margin-top: 120px;
+  &_title {
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 1.15;
+    color: #170f49;
+  }
+}
+.formBox {
+  &_title {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.15;
+    color: #170f49;
+    padding-bottom: 10px;
+  }
+  &_item {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    padding: 10px;
+  }
+}
+.line {
+  margin-left: 16px;
+  width: 34px;
+  height: 40px;
+}
+.line::after {
+  content: "";
+  display: block;
+  width: 3px;
+  height: 40px;
+  background-image: url('data:image/svg+xml;utf8,<svg width="3" height="40" viewBox="0 0 3 40" fill="none" xmlns="http://www.w3.org/2000/svg"><rect y="40" width="40" height="2.5" rx="1.25" transform="rotate(-90 0 40)" fill="%23D2CEFF"/></svg>');
+  background-size: cover;
+  border-radius: 40px;
+}
+
+.line_active::after {
+  content: "";
+  display: block;
+  width: 3px; /* ширина как у SVG */
+  height: 40px; /* высота как у SVG */
+  background-image: url('data:image/svg+xml;utf8,<svg width="3" height="40" viewBox="0 0 3 40" fill="none" xmlns="http://www.w3.org/2000/svg"><rect y="40" width="40" height="2.5" rx="1.25" transform="rotate(-90 0 40)" fill="%23D2CEFF"/><rect y="20" width="20" height="2.5" rx="1.25" transform="rotate(-90 0 20)" fill="%234A3AFF"/></svg>');
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 40px;
+}
+
+.feedback {
+  margin-top: auto;
+  display: flex;
+  gap: 35px;
+  justify-content: center;
+  justify-content: space-between;
+  h4 {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 1.15;
+    color: #170f49;
+  }
+  p {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.5;
+    color: #6f6c8f;
+    margin-top: 5px;
+  }
+
+  &-icon {
+    border: 0.5px solid #f1f2f9;
+    border-radius: 8px;
+    padding: 7px;
+    width: 34px;
+    height: 34px;
+    box-shadow: inset 0 -1px 1px 0 rgba(150, 161, 172, 0.12);
+    background: linear-gradient(180deg, #fff 0%, #f1f2f9 100%);
+  }
+}
+
+.red-star {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.15;
+  color: #ff0004;
+}
+
+.inputDefaul {
+  border: 1px solid #d9dbe9;
+  border-radius: 14px;
+  padding: 8px 16px;
+  width: 134px;
+  height: 48px;
+  min-height: 48px;
+  box-shadow: 0 1px 1px 0 rgba(25, 33, 61, 0.04);
+  background: #fff;
+}
+.inputLong {
+  border: 1px solid #d9dbe9;
+  border-radius: 14px;
+  padding: 8px 16px;
+  width: 285px;
+  height: 48px;
+  min-height: 48px;
+}
+.button {
+  border: 0.5px solid #d2ceff;
+  border-radius: 12px;
+  padding: 16px 18px;
+  width: 150px;
+  height: 48px;
+  min-height: 48px;
+  box-shadow:
+    inset 0 3px 4px 0 rgba(223, 238, 255, 0.1),
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.1),
+    inset 0 -2px 2px 0 rgba(0, 66, 137, 0.15),
+    0 2px 5px 0 rgba(74, 58, 255, 0.25);
+  background: linear-gradient(181deg, #8c82ff 0%, #4a3aff 100%);
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.15;
+  text-align: center;
+  color: #fff;
+  cursor: pointer;
+  margin-left: auto; /* Автоматический отступ слева */
+  display: block; /* Убедись что это блочный элемент */
+  width: 150px;
+}
