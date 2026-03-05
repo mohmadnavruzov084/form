@@ -50,7 +50,7 @@ body {
   .step-list {
     display: flex;
     flex-direction: column;
-    padding: 32px 45px;
+    padding: 32px 18px;
     gap: 10px;
 
     h4 {
@@ -117,7 +117,7 @@ body {
   align-items: center;
   justify-content: center;
   max-width: 500px;
-  margin-top: 120px;
+  margin-top: 100px;
   &_title {
     font-weight: 600;
     font-size: 24px;
@@ -126,12 +126,17 @@ body {
   }
 }
 .formBox {
+  max-width: 285px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   &_title {
     font-weight: 500;
     font-size: 14px;
     line-height: 1.15;
     color: #170f49;
-    padding-bottom: 10px;
+    padding: 7px 0px 15px 10px;
+    text-align: left;
   }
   &_item {
     display: flex;
@@ -244,4 +249,14 @@ body {
   margin-left: auto; /* Автоматический отступ слева */
   display: block; /* Убедись что это блочный элемент */
   width: 150px;
+  margin-top: 40px;
+}
+
+.castom-item {
+  padding: 10px 10px 4px 7px;
+  margin: 2px;
+}
+
+.form-label {
+  padding: 10px 0px 9px 2px;
 }

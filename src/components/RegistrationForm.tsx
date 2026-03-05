@@ -1,7 +1,29 @@
 // import React, { useState } from "react";
 import "./RegistrationForm.scss";
+import { useForm } from "react-hook-form";
+import { userSchema } from "../modules/userSchema";
+import { useUseStore } from "../modules/userStore";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { date } from "zod";
 
 function RegistrationForm() {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: zodResolver(userSchema),
+  });
+
+  const setUser = useUseStore((state) => state.setUser);
+
+  const onSubmit = () => {
+    console.log("Данные из формы (четкие):", data);
+
+    setUser(data);
+    alert("Регистрация успешна! Данные сохранены");
+  };
+
   return (
     <>
       <div className="container">
@@ -116,7 +138,11 @@ function RegistrationForm() {
 
         <div className="formRegistration">
           <h1 className="formRegistration_title">Personal information</h1>
-          <form action="#" className="formBox">
+          <form
+            action="#"
+            className="formBox"
+            onSubmit={handleSubmit(onSubmit)}
+          >
             <div className="formBox_item">
               <div>
                 <div className="formBox_title">
@@ -126,7 +152,11 @@ function RegistrationForm() {
                   type="text"
                   className="inputDefaul"
                   placeholder="Exp. John Carter"
+                  {...register("userFullName")}
                 />
+                {errors.userFullName && (
+                  <p style={{ color: "red" }}>{errors.userFullName.message}</p>
+                )}
               </div>
               <div>
                 <div className="formBox_title">
@@ -136,7 +166,11 @@ function RegistrationForm() {
                   type="text"
                   className="inputDefaul"
                   placeholder="Enter your email"
+                  {...register("email")}
                 />
+                {errors.email && (
+                  <p style={{ color: "red" }}>{errors.email.message}</p>
+                )}
               </div>
             </div>
 
@@ -149,7 +183,11 @@ function RegistrationForm() {
                   type="text"
                   className="inputDefaul"
                   placeholder="(123) 000-0000"
+                  {...register("phoneNumber")}
                 />
+                {errors.phoneNumber && (
+                  <p style={{ color: "red" }}>{errors.phoneNumber.message}</p>
+                )}
               </div>
 
               <div>
@@ -158,19 +196,31 @@ function RegistrationForm() {
                   type="text"
                   className="inputDefaul"
                   placeholder="Exp. Company"
+                  {...register("company")}
                 />
+                {errors.company && (
+                  <p style={{ color: "red" }}>{errors.company.message}</p>
+                )}
               </div>
             </div>
-            <div className="formBox_title">
-              Address
-              <span className="red-star">*</span>
+            <div className="formBox_title castom-item">
+              <p className="form-label">
+                Address <span className="red-star">*</span>
+              </p>
+
               <input
                 type="text"
-                className="inputLong"
+                className="inputLong castom-input"
                 placeholder="Exp. San Francisco, CA"
+                {...register("address")}
               />
+              {errors.address && (
+                <p style={{ color: "red" }}>{errors.address.message}</p>
+              )}
             </div>
-            <button className="button">Continue</button>
+            <button className="button" type="submit">
+              Continue
+            </button>
           </form>
         </div>
       </div>
