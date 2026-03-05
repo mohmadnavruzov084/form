@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { userSchema } from "../modules/userSchema";
 import { useUseStore } from "../modules/userStore";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { date } from "zod";
+
 
 function RegistrationForm() {
   const {
