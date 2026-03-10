@@ -1,10 +1,11 @@
 // import React, { useState } from "react";
 import "./RegistrationForm.scss";
-import { useForm } from "react-hook-form";
-import { userSchema } from "../modules/userSchema";
-import { useUseStore } from "../modules/userStore";
+import { FormProvider, useForm } from "react-hook-form";
+import { userSchema } from "../../modules/userSchema";
+import { useUseStore } from "../../modules/userStore";
 import { zodResolver } from "@hookform/resolvers/zod";
-
+import { FormInput } from "../../ui/FormInput";
+import { FormPhoneInput } from "../../ui/FormPhoneInput";
 
 function RegistrationForm() {
   const {
@@ -14,10 +15,21 @@ function RegistrationForm() {
   } = useForm({
     resolver: zodResolver(userSchema),
   });
+  const methods = useForm({
+    resolver: zodResolver(userSchema),
+    defaultValues: {
+      // хорошая практика
+      userFullName: "",
+      email: "",
+      phoneNumber: "",
+      company: "",
+      address: "",
+    },
+  });
 
   const setUser = useUseStore((state) => state.setUser);
 
-  const onSubmit = () => {
+  const onSubmit = (data) => {
     console.log("Данные из формы (четкие):", data);
 
     setUser(data);
@@ -138,90 +150,54 @@ function RegistrationForm() {
 
         <div className="formRegistration">
           <h1 className="formRegistration_title">Personal information</h1>
-          <form
-            action="#"
-            className="formBox"
-            onSubmit={handleSubmit(onSubmit)}
-          >
-            <div className="formBox_item">
-              <div>
-                <div className="formBox_title">
-                  Full name <span className="red-star">*</span>
-                </div>
-                <input
-                  type="text"
-                  className="inputDefaul"
+          <FormProvider {...methods}>
+            <form onSubmit={methods.handleSubmit(onSubmit)} className="formBox">
+              <div className="formBox_item">
+                <FormInput
+                  name="userFullName"
+                  label="Full name"
+                  required
                   placeholder="Exp. John Carter"
-                  {...register("userFullName")}
                 />
-                {errors.userFullName && (
-                  <p style={{ color: "red" }}>{errors.userFullName.message}</p>
-                )}
-              </div>
-              <div>
-                <div className="formBox_title">
-                  Email<span className="red-star">*</span>
-                </div>
-                <input
-                  type="text"
-                  className="inputDefaul"
+
+                <FormInput
+                  name="email"
+                  label="Email"
+                  required
+                  type="email"
                   placeholder="Enter your email"
-                  {...register("email")}
                 />
-                {errors.email && (
-                  <p style={{ color: "red" }}>{errors.email.message}</p>
-                )}
-              </div>
-            </div>
-
-            <div className="formBox_item">
-              <div>
-                <div className="formBox_title">
-                  Phone number <span className="red-star">*</span>
-                </div>
-                <input
-                  type="text"
-                  className="inputDefaul"
-                  placeholder="(123) 000-0000"
-                  {...register("phoneNumber")}
-                />
-                {errors.phoneNumber && (
-                  <p style={{ color: "red" }}>{errors.phoneNumber.message}</p>
-                )}
               </div>
 
-              <div>
-                <div className="formBox_title"> Company </div>
-                <input
-                  type="text"
-                  className="inputDefaul"
+              <div className="formBox_item">
+                <FormPhoneInput
+                  name="phoneNumber"
+                  label="Phone number"
+                  required
+                />
+
+                <FormInput
+                  name="company"
+                  label="Company"
                   placeholder="Exp. Company"
-                  {...register("company")}
                 />
-                {errors.company && (
-                  <p style={{ color: "red" }}>{errors.company.message}</p>
-                )}
               </div>
-            </div>
-            <div className="formBox_title castom-item">
-              <p className="form-label">
-                Address <span className="red-star">*</span>
-              </p>
 
-              <input
-                type="text"
-                className="inputLong castom-input"
-                placeholder="Exp. San Francisco, CA"
-                {...register("address")}
-              />
-              {errors.address && (
-                <p style={{ color: "red" }}>{errors.address.message}</p>
-              )}
-            </div>
-            <button className="button" type="submit">
-              Continue
-            </button>
-          </form>
+              <div className="formBox_title castom-item">
+                <FormInput
+                  name="address"
+                  label="Address"
+                  required
+                  placeholder="Exp. San Francisco, CA"
+                  className="inputLong castom-input"
+                />
+              </div>
+
+              <button className="button" type="submit">
+                Continue
+              </button>
+            </form>
+          </FormProvider>
         </div>
       </div>
     </>
