@@ -1,4 +1,4 @@
-import React from "react";
+import clsx from "clsx";
 import { useFormContext } from "react-hook-form";
 
 export const FormInput = ({
@@ -26,7 +26,7 @@ export const FormInput = ({
 
       <input
         type={type}
-        className={`inputDefaul ${error ? "input-error" : ""} ${className}`}
+        className={clsx("inputDefaul", className, { "input-error": error })}
         placeholder={placeholder}
         {...register(name)}
         {...props}
