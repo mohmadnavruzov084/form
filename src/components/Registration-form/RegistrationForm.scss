@@ -260,3 +260,8 @@ body {
 .form-label {
   padding: 10px 0px 9px 2px;
 }
+.input-error {
+  border-color: red;
+  // или
+  border: 2px solid red;
+}

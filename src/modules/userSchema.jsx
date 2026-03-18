@@ -8,7 +8,7 @@ export const userSchema = z.object({
   phoneNumber: z
     .string()
     .min(10, "Номер должен быть минимум 10 цифр")
-    .max(15, "Номер слишком длинный")
+    .max(20, "Номер слишком длинный")
     .regex(/^\+?[0-9\s\-\(\)]+$/, "Некорректный формат номера"),
   company: z.string().min(2, "Минимум 2 символа"),
   address: z.string().min(10, "Минимум 10 символов"),
