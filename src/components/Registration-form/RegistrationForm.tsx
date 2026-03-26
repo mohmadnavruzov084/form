@@ -1,22 +1,21 @@
 import React, { useState } from "react";
 import "./RegistrationForm.scss";
 import { FormProvider, useForm } from "react-hook-form";
-import { userSchema } from "../../modules/userSchema";
-import { useUseStore } from "../../modules/userStore";
+import { userSchema, type UserFormData } from "../../modules/userSchema.js";
+import { useUseStore } from "../../modules/userStore.js";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { FormInput } from "../../ui/FormInput";
 import { FormPhoneInput } from "../../ui/FormPhoneInput";
-import { SubscriptionPlan } from "./steps/SubscriptionPlan.jsx";
-import { IdentityVerification } from "./steps/IdentityVerification.jsx";
-import { AccountActivation } from "./steps/AccountActivation.jsx";
+import { SubscriptionPlan } from "./steps/SubscriptionPlan.js";
+import { IdentityVerification } from "./steps/IdentityVerification.js";
+import { AccountActivation } from "./steps/AccountActivation.js";
 
 function RegistrationForm() {
-  const [step, setStep] = useState(1);
-  const [selectedPlan, setSelectedPlan] = useState(null);
-  const [selectedMethod, setSelectedMethod] = useState(null);
+  const [step, setStep] = useState<1 | 2 | 3 | 4>(1);
+  const [selectedPlan, setSelectedPlan] = useState<string | null>(null);
+  const [selectedMethod, setSelectedMethod] = useState<string | null>(null);
 
-  // Только один useForm!
-  const methods = useForm({
+  const methods = useForm<UserFormData>({
     resolver: zodResolver(userSchema),
     defaultValues: {
       userFullName: "",
@@ -67,7 +66,10 @@ function RegistrationForm() {
       <div className="formRegistration">
         <h1 className="formRegistration_title">Personal information</h1>
         <FormProvider {...methods}>
-          <form onSubmit={methods.handleSubmit(handleContinue)} className="formBox">
+          <form
+            onSubmit={methods.handleSubmit(handleContinue)}
+            className="formBox"
+          >
             <div className="formBox_item">
               <FormInput
                 name="userFullName"
@@ -183,31 +185,47 @@ function RegistrationForm() {
 
         <div className="step-list">
           <div className="step-list_item">
-            <span className={`step-number ${step >= 1 ? 'step-number_active' : ''}`}>1</span>
+            <span
+              className={`step-number ${step >= 1 ? "step-number_active" : ""}`}
+            >
+              1
+            </span>
             <div className="step-list_step-content">
               <h4>Personal information</h4>
               <p>Tell us who you are to get started.</p>
             </div>
           </div>
-          <div className={`line ${step >= 2 ? 'line_active' : ''}`}></div>
+          <div className={`line ${step >= 2 ? "line_active" : ""}`}></div>
           <div className="step-list_item">
-            <span className={`step-number ${step >= 2 ? 'step-number_active' : ''}`}>2</span>
+            <span
+              className={`step-number ${step >= 2 ? "step-number_active" : ""}`}
+            >
+              2
+            </span>
             <div className="step-list_step-content">
               <h4>Subscription plan</h4>
               <p>Choose the product plan that fits your needs.</p>
             </div>
           </div>
-          <div className={`line ${step >= 3 ? 'line_active' : ''}`}></div>
+          <div className={`line ${step >= 3 ? "line_active" : ""}`}></div>
           <div className="step-list_item">
-            <span className={`step-number ${step >= 3 ? 'step-number_active' : ''}`}>3</span>
+            <span
+              className={`step-number ${step >= 3 ? "step-number_active" : ""}`}
+            >
+              3
+            </span>
             <div className="step-list_step-content">
               <h4>Identity verification</h4>
               <p>Verify your identity for security purposes.</p>
             </div>
           </div>
-          <div className={`line ${step >= 4 ? 'line_active' : ''}`}></div>
+          <div className={`line ${step >= 4 ? "line_active" : ""}`}></div>
           <div className="step-list_item">
-            <span className={`step-number ${step >= 4 ? 'step-number_active' : ''}`}>4</span>
+            <span
+              className={`step-number ${step >= 4 ? "step-number_active" : ""}`}
+            >
+              4
+            </span>
             <div className="step-list_step-content">
               <h4>Activate account</h4>
               <p>Final step! Let’s activate your account.</p>

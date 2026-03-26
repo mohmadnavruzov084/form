@@ -1,6 +1,32 @@
 import React from "react";
 import "./IdentityVerification.scss";
 import clsx from "clsx";
+const methods = [
+  {
+    id: "passport",
+    name: "Passport",
+    desc: "Upload photo of your passport",
+    icon: "📜",
+  },
+  {
+    id: "driver",
+    name: "Driver's license",
+    desc: "Upload front and back side",
+    icon: "🚗",
+  },
+  {
+    id: "idcard",
+    name: "ID card",
+    desc: "Government issued ID card",
+    icon: "📇",
+  },
+];
+interface IdentityVerificationProps {
+  selectedMethod: string | null;
+  setSelectedMethod: (plan: string | null) => void;
+  onNext: () => void;
+  onBack: () => void;
+}
 
 export const IdentityVerification = ({
   selectedMethod,
@@ -8,27 +34,6 @@ export const IdentityVerification = ({
   onNext,
   onBack,
 }) => {
-  const methods = [
-    {
-      id: "passport",
-      name: "Passport",
-      desc: "Upload photo of your passport",
-      icon: "📜",
-    },
-    {
-      id: "driver",
-      name: "Driver's license",
-      desc: "Upload front and back side",
-      icon: "🚗",
-    },
-    {
-      id: "idcard",
-      name: "ID card",
-      desc: "Government issued ID card",
-      icon: "📇",
-    },
-  ];
-
   return (
     <div className="identity-verification">
       <div className="identity-verification__content">

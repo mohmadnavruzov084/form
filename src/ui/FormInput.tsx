@@ -1,6 +1,17 @@
 import clsx from "clsx";
 import { useFormContext } from "react-hook-form";
 
+// Типизация пропсов
+interface FormInputProps {
+  name: string; // имя поля (обязательно)
+  label?: string; // текст над полем
+  required?: boolean; // обязательное поле?
+  type?: string; // тип input (text, email, tel и т.д.)
+  placeholder?: string; // плейсхолдер
+  className?: string; // дополнительные классы
+  [key: string]: any; // остальные пропсы (onChange, disabled и т.д.)
+}
+
 export const FormInput = ({
   name,
   label,
@@ -9,7 +20,7 @@ export const FormInput = ({
   placeholder,
   className = "",
   ...props
-}) => {
+}: FormInputProps) => {
   const {
     register,
     formState: { errors },

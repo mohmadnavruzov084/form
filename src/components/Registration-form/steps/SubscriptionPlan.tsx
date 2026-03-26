@@ -1,40 +1,43 @@
 import React, { useState } from "react";
 import "./SubscriptionPlan.scss";
-import useFormDataStore from "../../../modules/formDataStore";
-import clsx from "clsx";
+
+const plans = [
+  {
+    id: "15",
+    name: "15 visits",
+    price: "1500 ₽",
+    perVisit: "100 ₽/visit",
+    validity: "1 month",
+  },
+  {
+    id: "30",
+    name: "30 visits",
+    price: "2500 ₽",
+    perVisit: "83 ₽/visit",
+    validity: "2 months",
+    save: "Save 500 ₽",
+  },
+  {
+    id: "single",
+    name: "Single visit",
+    price: "200 ₽",
+    perVisit: "200 ₽/visit",
+    validity: "One time",
+  },
+];
+interface SubscriptionPlanProps {
+  selectedPlan: string | null;
+  setSelectedPlan: (plan: string | null) => void;
+  onNext: () => void;
+  onBack: () => void;
+}
+
 export const SubscriptionPlan = ({
   selectedPlan,
   setSelectedPlan,
   onNext,
   onBack,
-}) => {
-
-
-  const plans = [
-    {
-      id: "15",
-      name: "15 visits",
-      price: "1500 ₽",
-      perVisit: "100 ₽/visit",
-      validity: "1 month",
-    },
-    {
-      id: "30",
-      name: "30 visits",
-      price: "2500 ₽",
-      perVisit: "83 ₽/visit",
-      validity: "2 months",
-      save: "Save 500 ₽",
-    },
-    {
-      id: "single",
-      name: "Single visit",
-      price: "200 ₽",
-      perVisit: "200 ₽/visit",
-      validity: "One time",
-    },
-  ];
-
+}: SubscriptionPlanProps) => {
   return (
     <div className="subscription-plan">
       <div className="subscription-plan__content">
