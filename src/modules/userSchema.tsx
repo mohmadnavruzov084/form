@@ -9,5 +9,4 @@ export const userSchema = z.object({
   address: z.string().min(10, "Минимум 10 символов"),
 });
 
-// 👇 Экспортируем тип из схемы
 export type UserFormData = z.infer<typeof userSchema>;

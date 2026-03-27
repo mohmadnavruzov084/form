@@ -1,19 +1,13 @@
 import { create } from "zustand";
-
+import type { UserFormData } from "./userSchema";
 interface UserState {
-  userData: {
-    userFullName: string;
-    email: string;
-    phoneNumber: string;
-    company: string;
-    address: string;
-  } | null;
-  setUser: (data: UserState["userData"]) => void;
+  userData: UserFormData | null; // ← используем импортированный тип
+  setUser: (data: UserFormData | null) => void;
   clearUser: () => void;
 }
 
-export const useUseStore = create<UserState>((set) => ({
-  userData: null, 
+export const useUserDataStore = create<UserState>((set) => ({
+  userData: null,
   setUser: (data) => set({ userData: data }),
-  clearUser: () => set({ userData: null }), 
+  clearUser: () => set({ userData: null }),
 }));
