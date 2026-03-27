@@ -111,7 +111,25 @@ export const Sidebar = ({ step, onStepClick, canAccessStep, isStepCompleted }: S
       </div>
 
       <div className="feedback">
-        {/* ... feedback ... */}
+          <div>
+            <h4>Need a help?</h4>
+            <p>chat with live support</p>
+          </div>
+          <div className="feedback-icon">
+            <a href="https://vk.com/video-149258223_456243354">
+              <svg width="17" height="16" viewBox="0 0 17 16" fill="none">
+                <path
+                  d="M15.4027 11.9159V8.1264C15.4027 4.08017 12.1226 0.800049 8.07635 0.800049C4.03012 0.800049 0.75 4.08017 0.75 8.1264V11.9159M0.75 11.3601C0.75 9.8532 1.97156 8.63167 3.47843 8.63167C4.48301 8.63167 5.29739 9.44606 5.29739 10.4506V13.3812C5.29739 14.3857 4.48301 15.2001 3.47843 15.2001C1.97156 15.2001 0.75 13.9786 0.75 12.4717V11.3601ZM10.8553 10.4506C10.8553 9.44606 11.6697 8.63167 12.6743 8.63167C14.1812 8.63167 15.4027 9.8532 15.4027 11.3601V12.4717C15.4027 13.9786 14.1812 15.2001 12.6743 15.2001C11.6697 15.2001 10.8553 14.3857 10.8553 13.3812V10.4506Z"
+                  stroke="#170F49"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
       </div>
     </div>
   );
